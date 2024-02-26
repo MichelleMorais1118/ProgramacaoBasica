@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+  <title>Pedra, Papel, Tesoura</title>
+</head>
+<body>
+
+  <header>
+    <h1>Pedra, Papel, Tesoura </h1>
+  </header>
+
+  <div class="placar">
+    <div id="usuario" class="pontos">user</div>
+    <div id="computador"class="pontos">comp</div>
+
+    <span id="pontosusu">0</span>:<span id="pontoscomp">0</span>
+  </div>
+
+  <div class="resultado">
+    <p>Começe o jogo!.</p>
+  </div>
+
+  <div class="opcoes">
+    <div class="opcao" id="pe">
+        <button onclick="jogar('pedra')">✊</button>
+    </div>
+    <div class="opcao" id="pa">
+        <button onclick="jogar('papel')">✋</button>
+    </div>
+    <div class="opcao" id="te">
+        <button onclick="jogar('tesoura')">✌️</button>
+    </div>
+  </div>
+  <footer>
+    <p>feito por: ANDIRÊ CAINÃ, BEATRIZ FERREIRA, DAVID VICTOR, ERIC VIEIRA, GABRIEL ALBERICO, GUILHERME TEODORO, JOÃO PAULO, JOÃO PEDRO,  JULYANNA PEREIRA, LUCAS DE MORAIS, MURYÁ HENRIQUE, RAFAEL ALVES, SAMIRA MARQUENDES, VITOR IZAQUE , YURI CASTRO.</p>
+  </footer>
+
+  <p id="mensagem">Faça sua escolha!</p>
+
+  <script>
+    const jogadas = ["pedra", "papel","tesoura"];
+    let ganhou = 0;
+    let perdeu = 0;
+    function jogar(jogausu){
+        
+        const jogasorte = Math.floor(Math.random()*3);
+        const jogacomp = jogadas[jogasorte];
+        
+
+        if(jogacomp === jogausu){
+            alert("Empatou! Você e o computador jogaram o mesmo");
+        } else if( jogacomp === "pedra"){
+            if(jogausu === "papel"){
+                alert("Ganhou! O computador jogou pedra");
+                ganhou = ganhou + 1;
+            }
+            else{
+                alert("Perdeu :( O computador jogou pedra");
+                perdeu = perdeu + 1;
+            }
+        } else if(jogacomp === "papel"){
+            if(jogausu === "tesoura"){
+                alert("Ganhou! O computador jogou papel");
+                ganhou = ganhou + 1;
+            }
+            else{
+                alert("Perdeu :( O computador jogou papel");
+                perdeu = perdeu + 1;
+            } 
+        } else if(jogacomp === "tesoura"){
+            if(jogausu === "pedra"){
+                alert("Ganhou! O computador jogou tesoura");
+                ganhou = ganhou + 1;
+            }
+            else{
+                alert("Perdeu :( O computador jogou tesoura");
+                perdeu = perdeu + 1;
+            } 
+        }
+        document.querySelector("#pontosusu").innerText = ganhou;
+        document.querySelector("#pontoscomp").innerText = perdeu;
+    }
+  </script>
+</body>
+</html>
